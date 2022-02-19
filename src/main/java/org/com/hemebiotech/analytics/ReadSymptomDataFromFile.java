@@ -1,30 +1,28 @@
 package org.com.hemebiotech.analytics;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ReadSymptomDataFromFile implements ISymptomReader {
-     String filepath ;
-    public ReadSymptomDataFromFile(String file)
+    private final String filepath ;
+    private final String fileout ;
+
+    public ReadSymptomDataFromFile(String filepath, String fileout)
     {
-        this.filepath = file;
+          this.filepath = filepath;
+        this.fileout = fileout;
     }
+
     @Override
     public List<String> GetSymptoms() {
         List<String> result = new ArrayList<>();
-        String filepath = "symptoms.txt";
         try {
             BufferedReader reader = new BufferedReader (new FileReader(filepath));
             String line = reader.readLine();
-            int i = 0;
             while (line != null) {
                 result.add(line);
                 line = reader.readLine();
-                i++;
-               // System.out.println( i + line );
             }
             reader.close();
         } catch (IOException e) {
@@ -32,4 +30,12 @@ public class ReadSymptomDataFromFile implements ISymptomReader {
         }
         return result;
     }
-}
+
+    @Override
+    public void WriteSymptoms(String file) throws IOException {
+        try (FileWriter writer = new FileWriter(fileout, true)) {
+            writer.write(file + "\n");
+        }
+        // quoiqu'il arrive, on ferme le fichier
+    }
+    }

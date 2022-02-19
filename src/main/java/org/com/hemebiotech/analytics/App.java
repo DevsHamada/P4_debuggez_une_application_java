@@ -1,6 +1,7 @@
 package org.com.hemebiotech.analytics;
 
 
+import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
 
@@ -10,30 +11,24 @@ import java.util.List;
  */
 public class App 
 {
-    public static void main( String[] args )
-    {
-        ReadSymptomDataFromFile fiche = new ReadSymptomDataFromFile("symptoms.txt");
-        List<String> myretur;
+    public static void main( String[] args ) throws IOException {
+        ReadSymptomDataFromFile fiche = new ReadSymptomDataFromFile("symptoms.txt", "symptoms_out.txt");
+        List<String> returnee;
+        returnee = fiche.GetSymptoms();
+        Collections.sort(returnee);
 
-        myretur = fiche.GetSymptoms();
-        Collections.sort(myretur);
-        for(int i = 0 ; i < myretur.size(); i++)
+        for(int i = 0 ; i < returnee.size(); i++)
         {
-            int frequenceaa = Collections.frequency(myretur,myretur.get(i));
-            if (i+1 != myretur.size())
+            int Frequencies = Collections.frequency(returnee,returnee.get(i));
+            if (i+1 != returnee.size())
             {
-                if (myretur.get(i).equals(myretur.get(i + 1))) {
+                if (returnee.get(i).equals(returnee.get(i + 1))) {
                     continue;
                 } else {
-                    System.out.println(myretur.get(i) + " " + frequenceaa);
+                    fiche.WriteSymptoms(returnee.get(i)+ " : " + Frequencies);
+                    System.out.println(returnee.get(i) + " " + Frequencies);
                 }
             }
-
         }
-
-
-        //for(int i = 0 ; i < myretur.size(); i++)
-          //  System.out.println(myretur.get(i));
-
     }
 }
