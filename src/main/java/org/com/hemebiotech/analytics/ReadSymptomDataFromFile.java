@@ -2,6 +2,7 @@ package org.com.hemebiotech.analytics;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class ReadSymptomDataFromFile implements ISymptomReader {
@@ -41,12 +42,29 @@ public class ReadSymptomDataFromFile implements ISymptomReader {
         return result;
     }
 
-
     @Override
     public void WriteSymptoms(String file) throws IOException {
         try (FileWriter writer = new FileWriter(fileout, true)) {
             writer.write(file + "\n");
         }
         // quoiqu'il arrive, on ferme le fichier
+    }
+
+    public List<String> OccursCounter(List<String> list)  {
+        List<String> returne = new ArrayList<>();
+        String occurssymptoms;
+        for(int i = 0 ; i < list.size(); i++)
+        {
+            int Frequencies = Collections.frequency(list,list.get(i));
+            if (i+1 != list.size())
+            {
+                if (!(list.get(i).equals(list.get(i + 1)))) {
+                    occurssymptoms = list.get(i)+ " = " + Frequencies;
+                    returne.add(occurssymptoms);
+               //   System.out.println(occurssymptoms);
+                }
+            }
+        }
+        return returne;
     }
     }

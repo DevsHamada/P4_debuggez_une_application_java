@@ -8,23 +8,19 @@ import java.util.List;
 public class App
 {
     public static void main( String[] args ) throws IOException {
+
         ReadSymptomDataFromFile fiche = new ReadSymptomDataFromFile("symptoms.txt", "results_out.txt");
-        List<String> returnee;
-        returnee = fiche.GetSymptoms();
+
+        // Recuperate  List of Symptoms
+        List<String> returnee = fiche.GetSymptoms();
+
+        // trie the list of Symptoms
         Collections.sort(returnee);
 
-        for(int i = 0 ; i < returnee.size(); i++)
-        {
-            int Frequencies = Collections.frequency(returnee,returnee.get(i));
-            if (i+1 != returnee.size())
-            {
-                if (returnee.get(i).equals(returnee.get(i + 1))) {
-                    continue;
-                } else {
-                    fiche.WriteSymptoms(returnee.get(i)+ " = " + Frequencies);
-                    System.out.println(returnee.get(i) + " = " + Frequencies);
-                }
-            }
-        }
+        // count the occurs
+        returnee = fiche.OccursCounter(returnee);
+
+        // write all the Symptoms
+        for (String s : returnee) fiche.WriteSymptoms(s);
     }
 }
