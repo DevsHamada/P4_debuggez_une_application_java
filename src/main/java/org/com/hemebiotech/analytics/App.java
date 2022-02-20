@@ -5,14 +5,10 @@ import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
 
-/**
- * Hello world!
- *
- */
-public class App 
+public class App
 {
     public static void main( String[] args ) throws IOException {
-        ReadSymptomDataFromFile fiche = new ReadSymptomDataFromFile("symptoms.txt", "symptoms_out.txt");
+        ReadSymptomDataFromFile fiche = new ReadSymptomDataFromFile("symptoms.txt", "results_out.txt");
         List<String> returnee;
         returnee = fiche.GetSymptoms();
         Collections.sort(returnee);
@@ -25,8 +21,8 @@ public class App
                 if (returnee.get(i).equals(returnee.get(i + 1))) {
                     continue;
                 } else {
-                    fiche.WriteSymptoms(returnee.get(i)+ " : " + Frequencies);
-                    System.out.println(returnee.get(i) + " " + Frequencies);
+                    fiche.WriteSymptoms(returnee.get(i)+ " = " + Frequencies);
+                    System.out.println(returnee.get(i) + " = " + Frequencies);
                 }
             }
         }
