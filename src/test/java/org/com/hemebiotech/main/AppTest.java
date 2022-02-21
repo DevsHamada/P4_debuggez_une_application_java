@@ -1,4 +1,4 @@
-package org.com.hemebiotech.analytics;
+package org.com.hemebiotech.main;
 
 import static org.junit.Assert.assertTrue;
 
