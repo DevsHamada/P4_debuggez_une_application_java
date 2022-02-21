@@ -35,6 +35,7 @@ public class ReadSymptomDataFromFile implements ISymptomReader {
                 result.add(line);
                 line = reader.readLine();
             }
+            // quoiqu'il arrive, on ferme le fichier
             reader.close();
         } catch (IOException e) {
             e.printStackTrace();
@@ -43,11 +44,16 @@ public class ReadSymptomDataFromFile implements ISymptomReader {
     }
 
     @Override
-    public void WriteSymptoms(String file) throws IOException {
-        try (FileWriter writer = new FileWriter(fileout, true)) {
+    public void WriteSymptoms(String file) {
+        try
+        {
+            FileWriter writer = new FileWriter(fileout, true);
             writer.write(file + "\n");
         }
-        // quoiqu'il arrive, on ferme le fichier
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
     }
 
     public List<String> OccursCounter(List<String> list)  {
