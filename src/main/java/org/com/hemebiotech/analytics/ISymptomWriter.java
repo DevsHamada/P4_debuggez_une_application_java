@@ -1,12 +1,13 @@
 package org.com.hemebiotech.analytics;
 import java.io.IOException;
-import java.util.List;
+import java.util.Map;
 
 public interface ISymptomWriter {
     /**
      *
      *  write the list of symptoms
+     * @param file : list of symptoms with occurs
      */
 
-    void WriteSymptoms (List<String> file) throws IOException, AnalyticsException;
+    void writeSymptoms(Map<String, Integer> file) throws IOException, AnalyticsException;
 }
