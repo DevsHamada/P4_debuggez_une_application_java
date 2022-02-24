@@ -1,5 +1,6 @@
 package org.com.hemebiotech.analytics;
 import java.util.List;
+import java.util.Map;
 
 /**
  * finds the number of occurrences in the entire file
@@ -12,5 +13,5 @@ public interface IAnalyticsCounter {
      *
      */
 
-    List<String> analyticsCount(List<String> listOfSymptoms) ;
+    Map<String, Integer> analyticsCount(List<String> listOfSymptoms) ;
 }

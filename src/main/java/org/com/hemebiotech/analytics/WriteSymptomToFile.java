@@ -1,33 +1,27 @@
 package org.com.hemebiotech.analytics;
 
 import java.io.*;
-import java.util.List;
+import java.util.Map;
 
 public class WriteSymptomToFile implements ISymptomWriter {
-    private final String filepath ;
-
-
+    private final String filepath;
     /**
-     *  @param filepath output file name
-     *
+     * @param filepath output file name
      */
-    public WriteSymptomToFile(String filepath)
-    {
+    public WriteSymptomToFile(String filepath) {
         this.filepath = filepath;
     }
 
     @Override
-    public void WriteSymptoms(List<String> file) throws AnalyticsException {
-        try
-        {
-            System.out.println(filepath  + "\n");
-            System.out.println(file  + "\n");
-            BufferedWriter writer = new BufferedWriter(new FileWriter(filepath,true));
-            for (String s : file) writer.write(s  + "\n");
+    public void writeSymptoms(Map<String, Integer> file) throws AnalyticsException {
+        try {
+            System.out.println(file + "\n");
+            BufferedWriter writer = new BufferedWriter(new FileWriter(filepath, true));
+            for (Map.Entry<String, Integer> s : file.entrySet()) {
+                writer.write(s.getKey() + " : " + s.getValue() + "\n");
+            }
             writer.close();
-        }
-        catch (IOException e)
-        {
+        } catch (IOException e) {
             throw new AnalyticsException("write error in input file: " + filepath);
         }
     }

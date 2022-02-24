@@ -6,6 +6,6 @@ public interface ISymptomReader {
      *
      * @return retrieve the list of symptoms
      */
-    List<String> GetSymptoms () throws AnalyticsException;
+    List<String> getSymptoms() throws AnalyticsException;
 
 }
