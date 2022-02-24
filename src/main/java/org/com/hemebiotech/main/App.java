@@ -27,7 +27,7 @@ public class App
         returnee = Counter_Symptoms.analyticsCount(returnee);
 
         // write all the Symptoms
-        fiche_out.WriteSymptoms(returnee);
+        fiche_out.writeSymptoms(returnee);
 
     }
 }

@@ -8,5 +8,5 @@ public interface ISymptomWriter {
      *  write the list of symptoms
      */
 
-    void WriteSymptoms (List<String> file) throws IOException, AnalyticsException;
+    void writeSymptoms(List<String> file) throws IOException, AnalyticsException;
 }
