@@ -17,7 +17,7 @@ public class WriteSymptomToFile implements ISymptomWriter {
     }
 
     @Override
-    public void WriteSymptoms(List<String> file) throws AnalyticsException {
+    public void writeSymptoms(List<String> file) throws AnalyticsException {
         try
         {
             System.out.println(filepath  + "\n");
