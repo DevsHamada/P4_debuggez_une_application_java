@@ -15,7 +15,6 @@ public class AnalyticsCounter implements IAnalyticsCounter {
                 listSymptoms.put(list.get(i), 1);
             }
         }
-
         return listSymptoms;
     }
 }
