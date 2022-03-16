@@ -72,11 +72,13 @@ low blood pressure
 dialated pupils
 high blood pressure
 tremor
+ABCD
 high blood pressure
 arrhythmias
 fever
 constricted pupils
 cough
+ABCD
 stiff neck
 inflamation
 blurred vision
@@ -88,6 +90,7 @@ rash
 fever
 dry mouth
 fever
+ABCD
 high blood pressure
 stiff neck
 dialated pupils

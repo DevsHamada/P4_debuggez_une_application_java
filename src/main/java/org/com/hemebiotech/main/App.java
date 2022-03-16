@@ -11,20 +11,23 @@ import java.util.Map;
 public class App {
     public static void main(String[] args) throws IOException, AnalyticsException {
 
-        ISymptomReader fiche_in = new ReadSymptomDataFromFile("symptoms.txt");
+        String fileInPut  = "symptoms.txt";
+        String fileOutPut = "results_out.txt";
 
-        ISymptomWriter fiche_out = new WriteSymptomToFile("results_out.txt");
+        ISymptomReader readSymptomFromFileIn = new ReadSymptomDataFromFile(fileInPut);
 
-        IAnalyticsCounter Counter_Symptoms = new AnalyticsCounter();
+        ISymptomWriter writeSymptomToFileOut = new WriteSymptomToFile(fileOutPut);
+
+        IAnalyticsCounter counterSymptoms = new AnalyticsCounter();
 
         // Recuperate  List of Symptoms
-        List<String> returnee = fiche_in.getSymptoms();
+        List<String> returnee = readSymptomFromFileIn.getSymptoms();
 
         // count the occurs
-        Map<String, Integer> symptomscount = Counter_Symptoms.analyticsCount(returnee);
+        Map<String, Integer> symptomscount = counterSymptoms.analyticsCount(returnee);
 
         // write all the Symptoms
-        fiche_out.writeSymptoms(symptomscount);
+        writeSymptomToFileOut.writeSymptoms(symptomscount);
 
     }
 }
